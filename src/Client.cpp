@@ -84,6 +84,10 @@ namespace Proxima
 		// TODO: Investigate why this crashes and see if there's a way to pass Voice Data through the NET LAN adapter
 		Utils::Hook::Nop(0xA9AE73, 23);
 
+		// Proxima version string
+		static const auto proximaVersionStringFmt = "Proxima %s %1.3f";
+		Utils::Hook::Set(0xC58E64 + 1, proximaVersionStringFmt);
+
 #if DEBUG
 		// Allow multiple concurrent processes - this makes development easier
 		Utils::Hook::Nop(0XC9B4F3, 1);
